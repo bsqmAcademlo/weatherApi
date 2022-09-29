@@ -1,8 +1,7 @@
 import "./js/animationSearch.js";
 import "./js/changeColorMode.js";
-import { KEY } from "./js/config.js";
+import { getWeather } from "./js/api.js";
 import { changeDeg } from "./js/helpers.js";
-import { printCard } from "./js/layouts.js";
 import "./js/search.js";
 
 const card = document.getElementById("card");
@@ -14,7 +13,7 @@ function geoFindMe() {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
 
-        getWeather(latitude, longitude);
+        getWeather(latitude, longitude, false, degCelcius);
     }
 
     function error() {
@@ -27,20 +26,6 @@ function geoFindMe() {
         navigator.geolocation.getCurrentPosition(success, error);
     }
 }
-
-const getWeather = async (lat, lon) => {
-    try {
-        const data = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY}`
-        );
-
-        const response = await data.json();
-
-        printCard(response, degCelcius);
-    } catch (error) {
-        console.log(error);
-    }
-};
 
 card.addEventListener("click", (e) => {
     if (e.target.classList.contains("btn_change")) {

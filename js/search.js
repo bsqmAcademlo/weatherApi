@@ -1,18 +1,11 @@
-import { KEY } from "./config.js";
-import { printCard } from "./layouts.js";
+import { getWeather } from "./api.js";
 
 const search = document.querySelector("#search");
 
 search.addEventListener("change", async (e) => {
     try {
         const name = e.target.value;
-        const data = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${KEY}`
-        );
-
-        const res = await data.json();
-
-        printCard(res);
+        getWeather(null, null, name, null);
 
         e.target.value = "";
     } catch (error) {

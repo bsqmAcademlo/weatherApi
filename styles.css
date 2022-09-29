@@ -1,12 +1,12 @@
 :root {
-    --bg: #fff;
+    --bg: #eef1ff;
     --color-font: #181818;
     --color-card: #47b5ff;
 }
 
 body.darkTheme {
     --bg: #181818;
-    --color-font: #fff;
+    --color-font: #eef1ff;
     --color-card: #256d85;
 }
 
@@ -98,6 +98,7 @@ i {
 }
 
 .btn {
+    margin-top: 1rem;
     padding: 5px 10px;
     border: none;
     outline: none;
